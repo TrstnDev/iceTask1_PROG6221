@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace iceTask1
 {
@@ -6,14 +7,16 @@ namespace iceTask1
     {
         public static void Main(string[] args)
         {
-         Console.Write("-------Student Grade Calculator-------\n");
+            StringBuilder report = new StringBuilder();
+            Console.Write("-------Student Grade Calculator-------\n");
 
          var flag = false;
+         var nameInput = "";
 
          while (flag == false)
          {
              Console.Write("\nEnter student's name: ");
-             var nameInput = Console.ReadLine();
+             nameInput = Console.ReadLine();
              
              if (String.IsNullOrWhiteSpace(nameInput))
              {
@@ -21,7 +24,7 @@ namespace iceTask1
              }
              else
              {
-                 string[] names = nameInput.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                 var names = nameInput.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                  if (names.Length < 2)
                  {
@@ -53,22 +56,28 @@ namespace iceTask1
          }
 
          var scores = new int[3];
-         var input = "";
          flag = false;
          
-         for (var i = 1; i < 4; i++)
+         for (var i = 0; i < 3; i++)
          {
-             Console.Write($"\nEnter score {i} (out of 100): ");
-             input = Console.ReadLine();
+             Console.Write($"Enter score {i + 1} (out of 100): ");
+             var input = Console.ReadLine();
 
              while (!int.TryParse(input, out scores[i]))
              {
                  Console.WriteLine("VALUE MUST BE A NUMBER!");
-                 Console.Write($"Please try to enter score{i} again: ");
+                 Console.Write($"Enter score {i + 1} (out of 100) again: ");
                  input = Console.ReadLine();
              }
          }
+
+         report.AppendLine("\n-------GRADE REPORT-------");
+         report.AppendLine($"Student Name: {nameInput}");
+         report.AppendLine($"Scores: {scores[0]}%, {scores[1]}%, {scores[2]}%");
+         report.AppendLine($"Average Score: ");
+         report.AppendLine($"Final Grade: ");
          
+         Console.WriteLine(report);
         }
     }
 }
