@@ -8,7 +8,7 @@ namespace iceTask1
         public static void Main(string[] args)
         {
             StringBuilder report = new StringBuilder();
-            Console.Write("-------Student Grade Calculator-------\n");
+            Console.Write("-------Student Grade Calculator-------");
 
          var flag = false;
          var nameInput = "";
@@ -71,11 +71,34 @@ namespace iceTask1
              }
          }
 
-         report.AppendLine("\n-------GRADE REPORT-------");
+         var average = (scores[0] + scores[1] + scores[2]) / 3;
+         char grade = '\0';
+
+         switch (average)
+         {
+           case int n when (n >= 90 && n <= 100):
+               grade = 'A';
+               break;
+           case int n when (n >= 80 && n < 90):
+               grade = 'B';
+               break;
+           case int n when (n >= 70 && n < 80):
+               grade = 'C';
+               break;
+           case int n when (n >= 60 && n < 70):
+               grade = 'D';
+               break;
+           case int n when (n < 60):
+               grade = 'F';
+               break;
+         }
+         
+         
+         report.AppendLine("\n----------GRADE REPORT----------");
          report.AppendLine($"Student Name: {nameInput}");
          report.AppendLine($"Scores: {scores[0]}%, {scores[1]}%, {scores[2]}%");
-         report.AppendLine($"Average Score: ");
-         report.AppendLine($"Final Grade: ");
+         report.AppendLine($"Average Score: {average}%");
+         report.AppendLine($"Final Grade: {grade}");
          
          Console.WriteLine(report);
         }
