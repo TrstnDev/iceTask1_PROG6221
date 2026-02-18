@@ -4,6 +4,7 @@ namespace iceTask1
     {
         public static void Main(string[] args)
         {
+            
         }
     }
 }
