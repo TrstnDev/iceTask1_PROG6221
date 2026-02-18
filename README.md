@@ -4,7 +4,8 @@
 A C# console application designed to take user input to generate and display a simple grade report. It demonstrates basic C# functionalities such as implicit variable declaration, string manipulation, I/O manipulation, math & computational logic, error handling, and looping logic.
 
 ## Prerequisites
-- [.NET 4.8 framework](https://dotnet.microsoft.com/download)
+- [.NET Framework v4.8](https://dotnet.microsoft.com/download)
+- C# v7.3
 - Compatible IDE (native support on Windows Visual Studio 2022; cross-platform support using the Mono Runtime)
 
 ## Compatibility
