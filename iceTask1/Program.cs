@@ -1,3 +1,5 @@
+//==========================================AUTHOR: T. Kriel (Student ID: ST10467193)================================================
+
 using System;
 using System.Text;
 
@@ -5,17 +7,36 @@ namespace iceTask1
 {
     internal class Program
     {
+        
+        /// <summary>
+        /// Receives, validates, and manipulates user input to display a summary grade report
+        /// using string manipulation, math calculations, and looping logic.
+        /// </summary>
+        /// <param name="args"></param>
+        
         public static void Main(string[] args)
         {
-            //Instantiate stringbuilder object for final output   
-            StringBuilder report = new StringBuilder();
-            Console.Write("-------Student Grade Calculator-------");
-
-         var flag = false;
-         var nameInput = "";
-
+         //=========================================START OF MAIN PROGRAM LOGIC=================================================
+        
+        
+        
+         
+         //=======================================VARIABLE & OBJECT INSTANTIATION===============================================
+         
+         
+         StringBuilder report = new StringBuilder();   //create stringbuilder object to simplify final report generation
+         var flag = false;  //general flag to assist with looping logic and checks
+         var nameInput = "";  
+         var scores = new int[3];  //integer array to store 3 student scores while looping logic is active
+         var average = 0;
+         var grade = '\0';
+         
+         
          //===========================================NAME & SURNAME INPUT LOGIC================================================
         
+         
+         Console.Write("-------Student Grade Calculator-------");
+         
          while (flag == false)
          {
              Console.Write("\nEnter student's name: ");
@@ -28,7 +49,9 @@ namespace iceTask1
              }
              else
              {
-                 //Code retrieved from Google Gemini Pro; splits string input to see if a name AND surname were entered
+                 //Code adapted from Google Gemini Pro output; splits string input to see if a name AND surname were entered
+                 //https://gemini.google.com
+                 //Prompt: How would I validate if a string consists of two words, and if each is capitalised?
                  var names = nameInput.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                  //if the array containing the split string is less than 2, no surname was entered
@@ -64,12 +87,13 @@ namespace iceTask1
              }
          }
 
-         //===========================================SCORE INPUT & MATH LOGIC================================================
          
-         //initialise a small int array to store values during looping logic
-         var scores = new int[3];  
          
-         //reset boolean to false so it can be reused for next loop
+         
+         //===========================================SCORE INPUT & MATH LOGIC==================================================
+         
+         
+         //reset boolean flag to false so it can be reused for next loop
          flag = false;  
          
          //create a 'for' loop that repeats 3 times for score input
@@ -89,11 +113,14 @@ namespace iceTask1
          }
 
          //math logic to calculate average; for the purpose of this app truncation of numbers is acceptable
-         var average = (scores[0] + scores[1] + scores[2]) / 3;
+         average = (scores[0] + scores[1] + scores[2]) / 3;
+        
          
-         //initialise char variable
-         char grade = '\0';  
-
+         
+         
+         //=============================================GRADE ALLOCATION========================================================
+         
+         
          //use switch case to neatly assign grades instead of inefficient nested 'if else' statements
          switch (average)
          {
@@ -114,7 +141,11 @@ namespace iceTask1
                break;
          }
          
-         //===========================================FINAL REPORT GENERATION================================================
+         
+         
+         
+         //===========================================FINAL REPORT GENERATION==================================================
+         
          
          report.AppendLine("\n----------GRADE REPORT----------");
          report.AppendLine($"Student Name: {nameInput}");
@@ -123,6 +154,11 @@ namespace iceTask1
          report.AppendLine($"Final Grade: {grade}");
          
          Console.WriteLine(report);
+         
+         
+         
+         
+         //=============================================END OF PROGRAM=========================================================
         }
     }
 }
